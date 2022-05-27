@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get('SKEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -62,12 +63,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ['DB_ENGINE'],
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': os.environ['DB_HOST'],
-        'PORT': os.environ['DB_PORT'],
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'centerdb',
+        'USER': 'antonov',
+        'PASSWORD': 'antonov8501',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -128,7 +129,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Custom user model settings
 
-# AUTH_USER_MODEL = ''
+AUTH_USER_MODEL = 'user.UserProfile'
 
 # Registration with confirmation email settings
 
